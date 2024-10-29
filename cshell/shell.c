@@ -18,18 +18,15 @@ char *readline(void)
        if (feof(stdin))     
         {
             free(line);
-            exit(EXIT_SUCCESS);
-            
+            exit(EXIT_SUCCESS);      
         }
 
         else 
-
         {
             free(line);
             perror("error while reading the line from stdin");
             exit(EXIT_FAILURE);
         }
-
     }
 
     return line;
@@ -42,9 +39,7 @@ char** splitline(char* line)
     char* token;
     int buff_size=BUFFER_SIZE;
     int pos=0;
-    
     char **tokens= malloc(buff_size*sizeof(char*));
-
 
     if(tokens==NULL)
     {
@@ -174,22 +169,19 @@ int execute(char **args)
 }
 
 
-
 void loop(){
 char *read;
 char **split; 
 int status;
  
  do{
-printf(">");
-read = readline();
-split=splitline (read);
-status=execute(split);
-free(read);
-free(split);
+    printf(">");
+    read = readline();
+    split=splitline (read);
+    status=execute(split);
+    free(read);
+    free(split);
  }while(status);
-
-
 
 }
 int main(int argc, char **argv){
